@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C92F44B421E708900083322D /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F44B321E708900083322D /* NetworkManager.m */; };
 		C9E3FA7921E7004A0053079E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E3FA7821E7004A0053079E /* AppDelegate.m */; };
 		C9E3FA7C21E7004A0053079E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E3FA7B21E7004A0053079E /* ViewController.m */; };
 		C9E3FA7F21E7004A0053079E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E3FA7D21E7004A0053079E /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C92F44B221E708900083322D /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		C92F44B321E708900083322D /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		C9E3FA7421E7004A0053079E /* SPMobileData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPMobileData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E3FA7721E7004A0053079E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E3FA7821E7004A0053079E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -78,6 +81,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C92F44AE21E707680083322D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C92F44AF21E707770083322D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C92F44B021E707920083322D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C92F44B121E707B50083322D /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C92F44B221E708900083322D /* NetworkManager.h */,
+				C92F44B321E708900083322D /* NetworkManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		C9E3FA6B21E700490053079E = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +134,10 @@
 		C9E3FA7621E7004A0053079E /* SPMobileData */ = {
 			isa = PBXGroup;
 			children = (
+				C92F44B121E707B50083322D /* Manager */,
+				C92F44B021E707920083322D /* Model */,
+				C92F44AF21E707770083322D /* View */,
+				C92F44AE21E707680083322D /* Controller */,
 				C9E3FA7721E7004A0053079E /* AppDelegate.h */,
 				C9E3FA7821E7004A0053079E /* AppDelegate.m */,
 				C9E3FA7A21E7004A0053079E /* ViewController.h */,
@@ -262,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92F44B421E708900083322D /* NetworkManager.m in Sources */,
 				C9E3FA7C21E7004A0053079E /* ViewController.m in Sources */,
 				C9E3FA8721E7004D0053079E /* main.m in Sources */,
 				C9E3FA7921E7004A0053079E /* AppDelegate.m in Sources */,
