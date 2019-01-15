@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "NetworkManager.h"
+#import "GlobalConstants.h"
+#import "CommonUtils.h"
+
 @interface ViewController ()
 
 @end
@@ -24,11 +27,23 @@
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
 //                NSNumber *page = [JSON objectForKey:@"page"];
 //                self.downloadedPageFor2018 = [page integerValue];
+                if (JSON!=nil) {
+                    [CommonUtils writeText:[CommonUtils toJsonString:JSON] toFileName:DATA_JSON append:NO];
+                    [self reloadData];
+                }
+                
             }];
         }
 
     }];
 }
 
+-(void)reloadData {
+    [self.recordList reloadData];
+}
+#pragma mark - RecordListDelegate
+-(void)clickImageAtIndex:(NSIndexPath *)currentIndex{
+    NSLog(@"From VC clickImageAtIndex: %ld",(long)currentIndex.row );
 
+}
 @end

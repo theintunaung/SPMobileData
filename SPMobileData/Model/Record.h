@@ -13,8 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Record : NSObject
 
 @property (nonatomic) NSString* _id;
-@property (nonatomic) NSString* quarter;
+@property (nonatomic) NSString* year;
 @property (nonatomic) NSNumber* volume_of_mobile_data;
+@property (nonatomic) NSNumber* isDecrease;
 
 @end
 

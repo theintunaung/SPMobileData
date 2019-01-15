@@ -11,6 +11,9 @@
 		C956FAC821E80F500009A7A4 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = C956FAC721E80F500009A7A4 /* Record.m */; };
 		C956FACB21E813BA0009A7A4 /* RecordListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C956FACA21E813BA0009A7A4 /* RecordListViewModel.m */; };
 		C956FACE21E813F30009A7A4 /* RecordList.m in Sources */ = {isa = PBXBuildFile; fileRef = C956FACD21E813F30009A7A4 /* RecordList.m */; };
+		C9B94A8A21EDDCA100FFF792 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B94A8921EDDCA100FFF792 /* CommonUtils.m */; };
+		C9BABA3221EDEA5900F6C382 /* RecordCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BABA3021EDEA5900F6C382 /* RecordCellTableViewCell.m */; };
+		C9BABA3321EDEA5900F6C382 /* RecordCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9BABA3121EDEA5900F6C382 /* RecordCellTableViewCell.xib */; };
 		C9E3FA7921E7004A0053079E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E3FA7821E7004A0053079E /* AppDelegate.m */; };
 		C9E3FA7C21E7004A0053079E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E3FA7B21E7004A0053079E /* ViewController.m */; };
 		C9E3FA7F21E7004A0053079E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E3FA7D21E7004A0053079E /* Main.storyboard */; };
@@ -47,6 +50,12 @@
 		C956FACA21E813BA0009A7A4 /* RecordListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordListViewModel.m; sourceTree = "<group>"; };
 		C956FACC21E813F30009A7A4 /* RecordList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordList.h; sourceTree = "<group>"; };
 		C956FACD21E813F30009A7A4 /* RecordList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordList.m; sourceTree = "<group>"; };
+		C9B94A8821EDDCA100FFF792 /* CommonUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		C9B94A8921EDDCA100FFF792 /* CommonUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		C9BABA2D21EDE22100F6C382 /* GlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConstants.h; sourceTree = "<group>"; };
+		C9BABA2F21EDEA5900F6C382 /* RecordCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordCellTableViewCell.h; sourceTree = "<group>"; };
+		C9BABA3021EDEA5900F6C382 /* RecordCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordCellTableViewCell.m; sourceTree = "<group>"; };
+		C9BABA3121EDEA5900F6C382 /* RecordCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCellTableViewCell.xib; sourceTree = "<group>"; };
 		C9E3FA7421E7004A0053079E /* SPMobileData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPMobileData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E3FA7721E7004A0053079E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E3FA7821E7004A0053079E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -135,6 +144,26 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C9B94A8721EDDC8100FFF792 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C9BABA2D21EDE22100F6C382 /* GlobalConstants.h */,
+				C9B94A8821EDDCA100FFF792 /* CommonUtils.h */,
+				C9B94A8921EDDCA100FFF792 /* CommonUtils.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		C9BABA2E21EDEA3100F6C382 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C9BABA2F21EDEA5900F6C382 /* RecordCellTableViewCell.h */,
+				C9BABA3021EDEA5900F6C382 /* RecordCellTableViewCell.m */,
+				C9BABA3121EDEA5900F6C382 /* RecordCellTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		C9E3FA6B21E700490053079E = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +187,8 @@
 		C9E3FA7621E7004A0053079E /* SPMobileData */ = {
 			isa = PBXGroup;
 			children = (
+				C9B94A8721EDDC8100FFF792 /* Helper */,
+				C9BABA2E21EDEA3100F6C382 /* Cells */,
 				C956FAC521E80B1D0009A7A4 /* ViewModel */,
 				C956FAC421E80B150009A7A4 /* View */,
 				C956FAC321E80B070009A7A4 /* Model */,
@@ -297,6 +328,7 @@
 			files = (
 				C9E3FA8421E7004D0053079E /* LaunchScreen.storyboard in Resources */,
 				C9E3FA8121E7004D0053079E /* Assets.xcassets in Resources */,
+				C9BABA3321EDEA5900F6C382 /* RecordCellTableViewCell.xib in Resources */,
 				C9E3FA7F21E7004A0053079E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,7 +356,9 @@
 			files = (
 				C956FAC821E80F500009A7A4 /* Record.m in Sources */,
 				C92F44B421E708900083322D /* NetworkManager.m in Sources */,
+				C9B94A8A21EDDCA100FFF792 /* CommonUtils.m in Sources */,
 				C956FACE21E813F30009A7A4 /* RecordList.m in Sources */,
+				C9BABA3221EDEA5900F6C382 /* RecordCellTableViewCell.m in Sources */,
 				C9E3FA7C21E7004A0053079E /* ViewController.m in Sources */,
 				C956FACB21E813BA0009A7A4 /* RecordListViewModel.m in Sources */,
 				C9E3FA8721E7004D0053079E /* main.m in Sources */,

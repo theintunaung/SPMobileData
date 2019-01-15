@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RecordListViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol RecordListDelegate <NSObject>
+@optional
+-(void)clickImageAtIndex:(NSIndexPath *)currentIndex;
+@end
 
 @interface RecordList : UIView
-
+@property(nonatomic, unsafe_unretained) id<RecordListDelegate> delegate;
+-(void)reloadData;
 @end
 
 NS_ASSUME_NONNULL_END

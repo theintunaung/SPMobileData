@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RecordList.h"
 @interface ViewController : UIViewController
 
-
+@property(nonatomic, strong) IBOutlet RecordList *recordList;
 @end
 
