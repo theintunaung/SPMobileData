@@ -46,10 +46,10 @@
 -(void)clickImageWithRecord:(Record *)currentRecord{
    
     
-    NSString *aTitle = [NSString stringWithFormat:@"The quarter(s) that decrease in volume data of %@ \n",currentRecord.year];
+    NSString *msg = [NSString stringWithFormat:@"%@ \n %@",currentRecord.year,currentRecord.decreaseMsg];
     
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:aTitle message:currentRecord.decreaseMsg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:DECREASE_TITLE message:msg preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //button click event

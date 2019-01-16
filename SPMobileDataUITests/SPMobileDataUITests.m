@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "GlobalConstants.h"
 
 @interface SPMobileDataUITests : XCTestCase
 
@@ -33,6 +34,12 @@
 - (void)testExample {
     // Use recording to get started writing UI tests.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    XCUIApplication *app = [[XCUIApplication alloc] init];
+    [app.tables.images[@"Down_red_arrow"] tap];
+    [app.alerts[DECREASE_TITLE].buttons[@"OK"] tap];
+    
+    
+
 }
 
 @end
