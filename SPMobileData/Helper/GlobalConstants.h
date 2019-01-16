@@ -11,3 +11,5 @@
 
 #define SELECTED_COLOR [UIColor colorWithRed:30/255.0f green:177/255.0f blue:237/255.0f alpha:1]
 #define UNSELECTED_COLOR [UIColor whiteColor]
+
+#define RECORD_DETAIL @"_record_detail_title_"

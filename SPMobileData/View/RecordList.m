@@ -10,11 +10,11 @@
 #import "RecordCellTableViewCell.h"
 #import "Record.h"
 
-#define RECORD_DETAIL @"_record_detail_title_"
+
 @interface RecordList () < RecordListViewModelDelegate, UITableViewDelegate, UITableViewDataSource,RecordCellTableViewCellDelegate >{
 }
 @property (strong, nonatomic) RecordListViewModel *recordListViewModel;
-@property (strong, nonatomic) UITableView *tableView;
+
 @property (strong, nonatomic) NSArray* records;
 @end
 
