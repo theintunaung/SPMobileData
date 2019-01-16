@@ -12,6 +12,15 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.image.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+    
+    tapGesture1.numberOfTapsRequired = 1;
+    
+    [tapGesture1 setDelegate:self];
+    
+    [self.image addGestureRecognizer:tapGesture1];
     // Initialization code
 }
 
@@ -60,7 +69,7 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
-- (IBAction)didClickedImage {
+- (void)tapGesture:(id)sender {
     NSLog(@"didClickedImage");
 
     if (self.delegate &&

@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "RecordListViewModel.h"
+#import "Record.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @protocol RecordListDelegate <NSObject>
 @optional
--(void)clickImageAtIndex:(NSIndexPath *)currentIndex;
+-(void)clickImageWithRecord:(Record *)currentRecord;
 @end
 
 @interface RecordList : UIView

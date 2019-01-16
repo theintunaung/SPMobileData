@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RecordListViewModel : NSObject
 
 @property (nonatomic) NSArray* records;
-@property(nonatomic, unsafe_unretained) IBOutlet id<RecordListViewModelDelegate> delegate;
+@property(nonatomic, unsafe_unretained) id<RecordListViewModelDelegate> delegate;
 
 -(instancetype)initWithDelegate:(id)delegate;
--(void)initData;
+
 -(NSArray*)getRecords;
 -(NSArray*)getRecordsByYear:(NSString *)year;
 @end

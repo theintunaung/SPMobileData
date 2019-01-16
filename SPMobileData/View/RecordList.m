@@ -15,26 +15,17 @@
 }
 @property (strong, nonatomic) RecordListViewModel *recordListViewModel;
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray* records;
+@property (strong, nonatomic) NSArray* records;
 @end
 
 @implementation RecordList
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+-(void)awakeFromNib {
+    [super awakeFromNib];
+    self.records = [[NSArray alloc]init];
+    self.recordListViewModel = [[RecordListViewModel alloc]initWithDelegate:self];
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self reloadData];
-        [self configureViews];
-    }
-    return self;
+    
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -47,9 +38,7 @@
 }
 
 -(void)reloadData {
-    self.records = [[NSMutableArray alloc]init];
-    self.recordListViewModel = [[RecordListViewModel alloc]initWithDelegate:self];
-    [self configureViews];
+     [self configureViews];
 }
 -(void)configureViews {
     
@@ -106,7 +95,12 @@
         [cell bind:aRecord];
         [cell alterCellTheme:(indexPath.row%2==0)];
         return cell;
-        
+    
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:RECORD_DETAIL];
+//    cell.textLabel.text = @"Text";
+//    cell.detailTextLabel.text = @"secondaryTitleKey";
+
+    return cell;
     
 }
 
@@ -114,55 +108,34 @@
     //    ExpandableCellData* cellData = self.comparisonData[indexPath.section];
     //    NSArray<CellData*>* sectionData = cellData.sectionData[indexPath.row];
     //    return [CompareDetailCell2 calculateCellHeight:sectionData tableWidth:WIDTH(tableView)];
-    return 43.5f;
+    RecordCellTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:RECORD_DETAIL];
+    return cell.frame.size.height;
 }
 
 #pragma mark - RecordListViewModelDelegate
 - (void)recordListViewModelDidFinishInit:(RecordListViewModel *)compareViewModel {
-    [self loadData];
-}
-
-- (void)recordListViewModelDidReloadData:(RecordListViewModel *)compareViewModel {
-    [self loadData];
-}
-
--(void)loadData {
-    NSArray *years = [self getDataForYears];
-    for (NSString *aYear in years) {
-        NSArray *results = [self.recordListViewModel getRecordsByYear:aYear];
-        
-        Record *aRecord = [[Record alloc] init];
-        aRecord.year = aYear;
-        long mobileData = 0;
-        long totalMobileData = 0;
-        BOOL isDecreasing = NO;
-        for (NSDictionary *aDic in results) {
-            NSNumber *quarterlyData = [aDic valueForKey:@"volume_of_mobile_data"];
-            long quarterlyDataLong = [quarterlyData longValue];
-            if (mobileData > quarterlyDataLong && isDecreasing == NO) {
-                isDecreasing = YES;
-            }
-            mobileData = quarterlyDataLong;
-            totalMobileData += quarterlyDataLong;
-        }
-        aRecord.isDecrease = [NSNumber numberWithBool:isDecreasing];
-        aRecord.volume_of_mobile_data = [NSNumber numberWithLong:totalMobileData];
-    }
+    self.records = compareViewModel.records;
     [self.tableView reloadData];
 }
+    
 
--(NSArray*)getDataForYears{
-    return @[@"2018",@"2017"];
+
+- (void)recordListViewModelDidReloadData:(RecordListViewModel *)compareViewModel {
+   self.records = compareViewModel.records;
+    [self.tableView reloadData];
 }
-
 
 #pragma mark - RecordCellTableViewCellDelegate
 -(void)clickImageAtIndex:(NSIndexPath *)currentIndex{
     NSLog(@"clickImageAtIndex: %ld",(long)currentIndex.row );
+    Record *aRecord = [self.records objectAtIndex:currentIndex.row];
     if (self.delegate &&
-        [self.delegate respondsToSelector:@selector(clickImageAtIndex:)]) {
-        [self.delegate clickImageAtIndex:currentIndex];
+        [self.delegate respondsToSelector:@selector(clickImageWithRecord:)]) {
+        [self.delegate clickImageWithRecord:aRecord];
     }
 }
+
+
+
 @end
 

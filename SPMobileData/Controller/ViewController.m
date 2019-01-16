@@ -11,7 +11,7 @@
 #import "GlobalConstants.h"
 #import "CommonUtils.h"
 
-@interface ViewController ()
+@interface ViewController () <RecordListDelegate>
 
 @end
 
@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.recordList.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
     [NetworkManager getDatastoreonCompletion:^(BOOL success, id JSON) {
         NSLog(@"message %@",JSON);
@@ -42,8 +43,21 @@
     [self.recordList reloadData];
 }
 #pragma mark - RecordListDelegate
--(void)clickImageAtIndex:(NSIndexPath *)currentIndex{
-    NSLog(@"From VC clickImageAtIndex: %ld",(long)currentIndex.row );
+-(void)clickImageWithRecord:(Record *)currentRecord{
+   
+    
+    NSString *aTitle = [NSString stringWithFormat:@"The quarter(s) that decrease in volume data of %@ \n",currentRecord.year];
+    
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:aTitle message:currentRecord.decreaseMsg preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //button click event
+    }];
+    
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+    
 
 }
 @end

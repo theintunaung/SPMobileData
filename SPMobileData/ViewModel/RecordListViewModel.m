@@ -9,20 +9,23 @@
 #import "RecordListViewModel.h"
 #import "CommonUtils.h"
 #import "GlobalConstants.h"
+#import "Record.h"
 
 @implementation RecordListViewModel
 
--(instancetype)init{
-    self = [super init];
-    if (self) {
-        [self reloadData];
-    }
-    return self;
-}
+//-(instancetype)init{
+//    self = [super init];
+//    if (self) {
+//        self.records = [NSArray array];
+//        [self reloadData];
+//    }
+//    return self;
+//}
 
 -(instancetype)initWithDelegate:(id)delegate{
     self = [super init];
     if (self) {
+        self.records = [NSArray array];
         self.delegate = delegate;
         [self initData];
 
@@ -52,7 +55,7 @@
     NSString *filePath = [CommonUtils getFullPath:jsonFileName];
     NSDictionary* dict = [CommonUtils readJSONFile:filePath error:&error];
     NSArray* recordArray;
-    
+    NSMutableArray* resultArray = [NSMutableArray array];
     if(dict!=nil)
     {
         if (error) {
@@ -63,19 +66,50 @@
                 
                 recordArray = [[dict valueForKeyPath:@"result"] valueForKey:@"records"];
                 
+                NSArray *years = [self getDataForYears];
+                for (NSString *aYear in years) {
+                    NSArray *results =[recordArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"quarter CONTAINS %@", aYear]];
+                    
+                    
+                    Record *aRecord = [[Record alloc] init];
+                    aRecord.year = aYear;
+                    float mobileData = 0;
+                    float totalMobileData = 0;
+                    BOOL isDecreasing = NO;
+                    NSString *previousQuarter;
+                    NSString *currentQuarter;
+                    
+                    
+                    for (NSDictionary *aDic in results) {
+                        NSString *quarterlyData = [aDic valueForKey:@"volume_of_mobile_data"];
+                        currentQuarter = [aDic valueForKey:@"quarter"];
+                        float quarterlyDataLong = [quarterlyData floatValue];
+                        if (mobileData > quarterlyDataLong ) {
+                            aRecord.decreaseMsg = [NSString stringWithFormat:@"%f (%@) To %@ (%@) \n",mobileData,previousQuarter,quarterlyData,currentQuarter];
+                            if (!isDecreasing) {
+                                isDecreasing = YES;
+                            }
+                            
+                        }
+                        mobileData = quarterlyDataLong;
+                        totalMobileData += quarterlyDataLong;
+                        previousQuarter = currentQuarter;
+                    }
+                    aRecord.isDecrease = [NSNumber numberWithBool:isDecreasing];
+                    aRecord.volume_of_mobile_data = [NSNumber numberWithFloat:totalMobileData];
+                    [resultArray addObject:aRecord];
+                }
+                
+                
+                
             }
         }
     }
-    return recordArray;
+    return resultArray;
 }
 
--(NSArray*)getRecords {
-    return self.records;
-}
-
--(NSArray*)getRecordsByYear:(NSString *)year {
-    NSArray *filtered = [self.records filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"quarter CONTAINS %@", year]];
-    return filtered;
+-(NSArray*)getDataForYears{
+    return @[@"2018",@"2017",@"2016",@"2015",@"2014"];
 }
 
 @end
